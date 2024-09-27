@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Busqueda por placa</title>
+</head>
+<body>
+<style>
+    body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #dcabdc;
+        }
+        .container {
+            text-align: center;
+            background-color: #a30bef;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 20px 20px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #ef0bef;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+</style>
+<div class="container">
+    <div class="mt-5 mb-4">
+        <h1>Rueditas</h1>
+    </div>
+
+    <div class="alert alert-danger" role="alert" th:if="${rueditasModel.codigo == '00'}">
+        Resultado de la busqueda
+    </div>
+
+    <div class="mb-3" th:if="${rueditasResponse.codigo == '00'}">
+        <ul>
+            <li><strong>Marca:</strong> <span th:text="${rueditasResponse.marca}"></span></li>
+            <li><strong>Modelo:</strong> <span th:text="${rueditasResponse.modelo}"></span></li>
+            <li><strong>Nro. Asientos:</strong> <span th:text="${rueditasResponse.nroAsientos}"></span></li>
+            <li><strong>Precio:</strong> <span th:text="${rueditasResponse.precio}"></span></li>
+            <li><strong>Color:</strong> <span th:text="${rueditasResponse.color}"></span></li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <a class="btn btn-primary" th:href="@{/buscar/inicio}">Volver</a>
+    </div>
+</div>
+</body>
+</html>
